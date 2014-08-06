@@ -1,0 +1,90 @@
+﻿@using Foosinator.Models
+@model HomeViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm())
+{
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Foosinator, like the baconator, but for foosball. And not a burger</h2>
+            <h3>Proudly brought to you by Brian.</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Who are you?</h3>
+        </div>
+        <div class="col-md-6">
+            <select class="form-control" name="PlayerId">
+                @foreach (Player player in Model.Players)
+                {
+                    <option value="@player.Id">@player.Name</option>
+                }
+            </select>
+
+            <p>@Html.ActionLink("Not there?", "Create", "Player")</p>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Who's on your team?</h3>
+        </div>
+        <div class="col-md-6">
+            <select class="form-control" name="TeamPlayerId">
+                <option value="@Guid.Empty">No one</option>
+                @foreach (Player player in Model.Players)
+                {
+                    <option value="@player.Id">@player.Name</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Who are you playing?</h3>
+        </div>
+        <div class="col-md-6">
+            <select class="form-control" name="VsPlayerId">
+                @foreach (Player player in Model.Players)
+                {
+                    <option value="@player.Id">@player.Name</option>
+                }
+            </select>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Who's their team mate?</h3>
+        </div>
+        <div class="col-md-6">
+            <select class="form-control" name="VsPlayerTeamMateId">
+                <option value="@Guid.Empty">No one</option>
+                @foreach (Player player in Model.Players)
+                {
+                    <option value="@player.Id">@player.Name</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <hr />
+
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <input type="submit" class="btn btn-success btn-lg" value="Let's go!" />
+        </div>
+    </div>
+
+}

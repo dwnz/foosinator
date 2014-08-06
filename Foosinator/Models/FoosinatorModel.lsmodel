@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<model xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.1.0.0" name="FoosinatorModel" targetNamespace="Foosinator.Models" databaseProvider="SqlServer2008" connectionString="Data Source=.;Initial Catalog=Foosinator;Integrated Security=True;Pooling=False" pluralizedInDatabase="false" mediumTrustCompatibility="false" xmlns="http://namespaces.mindscape.co.nz/lightspeed">
+  <entities>
+    <entity name="Player" identityType="Guid" cacheExpiry="0" tableName="Players">
+      <entityProperties>
+        <entityProperty name="Name" privateSetter="false">
+          <validations>
+            <presenceValidation />
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Created" dataType="DateTime" privateSetter="false" />
+      </entityProperties>
+      <oneToManyAssociations>
+        <oneToManyAssociation Id="2cd414ac-2abb-412c-82e5-34cce4030af4" collectionName="GamesByPlayer1" backreferenceName="Player1" isNullable="false" columnName="Player1">
+          <entityMoniker name="/FoosinatorModel/Game" />
+        </oneToManyAssociation>
+        <oneToManyAssociation Id="13c036ca-12fe-48e2-8642-28b7f56f4fc4" collectionName="GamesByPlayer2" backreferenceName="Player2" isNullable="false" columnName="Player2">
+          <entityMoniker name="/FoosinatorModel/Game" />
+        </oneToManyAssociation>
+        <oneToManyAssociation Id="22b504d8-a7df-445a-b1b4-325982013e30" collectionName="GamesByPlayer3" backreferenceName="Player3" isNullable="true" columnName="Player3">
+          <entityMoniker name="/FoosinatorModel/Game" />
+        </oneToManyAssociation>
+        <oneToManyAssociation Id="a210ebba-42aa-4c81-9e41-555b1e19562e" collectionName="GamesByPlayer4" backreferenceName="Player4" isNullable="true" columnName="Player4">
+          <entityMoniker name="/FoosinatorModel/Game" />
+        </oneToManyAssociation>
+        <oneToManyAssociation Id="fd869e74-4d50-46c0-9d7a-a431f967b611" collectionName="ResultsByWinner1" backreferenceName="Winner1" isNullable="false" columnName="Winner1">
+          <entityMoniker name="/FoosinatorModel/Result" />
+        </oneToManyAssociation>
+        <oneToManyAssociation Id="43ef087d-dfaa-42c0-8a89-52ef807acf1e" collectionName="ResultsByWinner2" backreferenceName="Winner2" isNullable="true" columnName="Winner2">
+          <entityMoniker name="/FoosinatorModel/Result" />
+        </oneToManyAssociation>
+        <oneToManyAssociation Id="3d1ffc97-6e47-4567-b1fe-4fc5f85d651a" collectionName="ResultsByLoser1" backreferenceName="Loser1" isNullable="false" columnName="Loser1">
+          <entityMoniker name="/FoosinatorModel/Result" />
+        </oneToManyAssociation>
+        <oneToManyAssociation Id="837df8e9-7d31-4af5-a7ea-9fefde90e3df" collectionName="ResultsByLoser2" backreferenceName="Loser2" isNullable="true" columnName="Loser2">
+          <entityMoniker name="/FoosinatorModel/Result" />
+        </oneToManyAssociation>
+      </oneToManyAssociations>
+    </entity>
+    <entity name="Game" identityType="Guid" cacheExpiry="0" tableName="Games">
+      <entityProperties>
+        <entityProperty name="Created" dataType="DateTime" privateSetter="false" />
+        <entityProperty name="Pin" isNullable="true" privateSetter="false">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Status" isNullable="true" privateSetter="false">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+      </entityProperties>
+      <oneToManyAssociations>
+        <oneToManyAssociation Id="3a01503d-7251-492c-9936-a07eaacd2158" collectionName="Results" backreferenceName="Game" isNullable="false">
+          <entityMoniker name="/FoosinatorModel/Result" />
+        </oneToManyAssociation>
+      </oneToManyAssociations>
+    </entity>
+    <entity name="Result" identityType="Guid" cacheExpiry="0" tableName="Results">
+      <entityProperties>
+        <entityProperty name="Created" dataType="DateTime" privateSetter="false" />
+      </entityProperties>
+    </entity>
+  </entities>
+</model>
