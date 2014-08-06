@@ -18,7 +18,7 @@ namespace Foosinator.Controllers
                 ModelState.AddModelError("Name", "Name cannot be empty");
             }
 
-            if (_playersService.HasPlayerWithName(player.Name))
+            if (PlayersService.HasPlayerWithName(player.Name))
             {
                 ModelState.AddModelError("Name", "Someone has that name");
             }
@@ -29,7 +29,7 @@ namespace Foosinator.Controllers
             }
 
 
-            player = _playersService.CreatePlayer(player.Name);
+            player = PlayersService.CreatePlayer(player.Name);
 
             return RedirectToAction("Index", "Home", new { player = player.Id });
         }

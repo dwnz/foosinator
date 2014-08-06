@@ -24,16 +24,7 @@
         <oneToManyAssociation Id="a210ebba-42aa-4c81-9e41-555b1e19562e" collectionName="GamesByPlayer4" backreferenceName="Player4" isNullable="true" columnName="Player4">
           <entityMoniker name="/FoosinatorModel/Game" />
         </oneToManyAssociation>
-        <oneToManyAssociation Id="fd869e74-4d50-46c0-9d7a-a431f967b611" collectionName="ResultsByWinner1" backreferenceName="Winner1" isNullable="false" columnName="Winner1">
-          <entityMoniker name="/FoosinatorModel/Result" />
-        </oneToManyAssociation>
-        <oneToManyAssociation Id="43ef087d-dfaa-42c0-8a89-52ef807acf1e" collectionName="ResultsByWinner2" backreferenceName="Winner2" isNullable="true" columnName="Winner2">
-          <entityMoniker name="/FoosinatorModel/Result" />
-        </oneToManyAssociation>
-        <oneToManyAssociation Id="3d1ffc97-6e47-4567-b1fe-4fc5f85d651a" collectionName="ResultsByLoser1" backreferenceName="Loser1" isNullable="false" columnName="Loser1">
-          <entityMoniker name="/FoosinatorModel/Result" />
-        </oneToManyAssociation>
-        <oneToManyAssociation Id="837df8e9-7d31-4af5-a7ea-9fefde90e3df" collectionName="ResultsByLoser2" backreferenceName="Loser2" isNullable="true" columnName="Loser2">
+        <oneToManyAssociation Id="4e61dcaa-c989-4269-925e-912ae8b86ee8" collectionName="Results" backreferenceName="Player" isNullable="true">
           <entityMoniker name="/FoosinatorModel/Result" />
         </oneToManyAssociation>
       </oneToManyAssociations>
@@ -61,6 +52,12 @@
     <entity name="Result" identityType="Guid" cacheExpiry="0" tableName="Results">
       <entityProperties>
         <entityProperty name="Created" dataType="DateTime" privateSetter="false" />
+        <entityProperty name="Status" privateSetter="false">
+          <validations>
+            <presenceValidation />
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
       </entityProperties>
     </entity>
   </entities>

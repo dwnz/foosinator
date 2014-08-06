@@ -5,13 +5,15 @@ namespace Foosinator.Controllers
 {
     public class BaseController : Controller
     {
-        protected PlayersService _playersService;
-        protected GameService _gameService;
+        protected PlayersService PlayersService;
+        protected GameService GameService;
+        protected ResultsService ResultsService;
 
         public BaseController()
         {
-            _playersService = new PlayersService();
-            _gameService = new GameService();
+            PlayersService = new PlayersService();
+            GameService = new GameService();
+            ResultsService = new ResultsService();
         }
     }
 }

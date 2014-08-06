@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Foosinator.Models.LeaderboardRow>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Leaderboard</h2>
+
+<p>
+    @Html.ActionLink("Home", "Index", "Home", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Points)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Wins)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Losses)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Points
+            </td>
+            <td>
+                @item.Wins
+            </td>
+            <td>
+                @item.Losses
+            </td>
+        </tr>
+    }
+
+</table>

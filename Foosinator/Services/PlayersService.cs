@@ -8,7 +8,8 @@ namespace Foosinator.Services
 {
     public class PlayersService
     {
-        readonly LightSpeedContext<FoosinatorModelUnitOfWork> _context = new LightSpeedContext<FoosinatorModelUnitOfWork>("Database");
+        readonly LightSpeedContext<FoosinatorModelUnitOfWork> 
+            _context = new LightSpeedContext<FoosinatorModelUnitOfWork>("Database");
 
         public List<Player> GetAllPlayers()
         {

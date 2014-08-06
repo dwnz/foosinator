@@ -3,7 +3,15 @@
 @{
     ViewBag.Title = "Index";
 }
-
+@if (Model.ActiveGame != null)
+{
+    <div class="alert alert-danger">
+        <p>
+            <strong>WOW BUDDY!</strong> There's a game already running...
+        </p>
+        <p>@Html.ActionLink("Go to it", "Index", "Game", new { id = Model.ActiveGame.Id }, new { @class = "btn btn-primary" })</p>
+    </div>
+}
 @using (Html.BeginForm())
 {
 
@@ -11,6 +19,9 @@
         <div class="col-md-12">
             <h2>Foosinator, like the baconator, but for foosball. And not a burger</h2>
             <h3>Proudly brought to you by Brian.</h3>
+            <p>
+                @Html.ActionLink("Leaderboard", "Index", "Leaderboard", null, new { @class = "btn btn-primary" })
+            </p>
         </div>
     </div>
 
@@ -25,7 +36,6 @@
                     <option value="@player.Id">@player.Name</option>
                 }
             </select>
-
             <p>@Html.ActionLink("Not there?", "Create", "Player")</p>
         </div>
     </div>

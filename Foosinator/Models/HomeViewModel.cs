@@ -6,7 +6,7 @@ namespace Foosinator.Models
     public class HomeViewModel
     {
         public List<Player> Players { get; set; }
-        public bool HasActiveGame { get; set; }
+        public Game ActiveGame { get; set; }
 
         public Guid PlayerId { get; set; }
         public Guid TeamPlayerId { get; set; }

@@ -41,14 +41,8 @@ namespace Foosinator.Models
     private readonly EntityCollection<Game> _gamesByPlayer3 = new EntityCollection<Game>();
     [ReverseAssociation("Player4")]
     private readonly EntityCollection<Game> _gamesByPlayer4 = new EntityCollection<Game>();
-    [ReverseAssociation("Winner1")]
-    private readonly EntityCollection<Result> _resultsByWinner1 = new EntityCollection<Result>();
-    [ReverseAssociation("Winner2")]
-    private readonly EntityCollection<Result> _resultsByWinner2 = new EntityCollection<Result>();
-    [ReverseAssociation("Loser1")]
-    private readonly EntityCollection<Result> _resultsByLoser1 = new EntityCollection<Result>();
-    [ReverseAssociation("Loser2")]
-    private readonly EntityCollection<Result> _resultsByLoser2 = new EntityCollection<Result>();
+    [ReverseAssociation("Player")]
+    private readonly EntityCollection<Result> _results = new EntityCollection<Result>();
 
 
     #endregion
@@ -80,27 +74,9 @@ namespace Foosinator.Models
     }
 
     [System.Diagnostics.DebuggerNonUserCode]
-    public EntityCollection<Result> ResultsByWinner1
+    public EntityCollection<Result> Results
     {
-      get { return Get(_resultsByWinner1); }
-    }
-
-    [System.Diagnostics.DebuggerNonUserCode]
-    public EntityCollection<Result> ResultsByWinner2
-    {
-      get { return Get(_resultsByWinner2); }
-    }
-
-    [System.Diagnostics.DebuggerNonUserCode]
-    public EntityCollection<Result> ResultsByLoser1
-    {
-      get { return Get(_resultsByLoser1); }
-    }
-
-    [System.Diagnostics.DebuggerNonUserCode]
-    public EntityCollection<Result> ResultsByLoser2
-    {
-      get { return Get(_resultsByLoser2); }
+      get { return Get(_results); }
     }
 
 
@@ -285,14 +261,10 @@ namespace Foosinator.Models
     #region Fields
   
     private System.DateTime _created;
-    [Column("Winner1")]
-    private System.Guid _winner1Id;
-    [Column("Winner2")]
-    private System.Nullable<System.Guid> _winner2Id;
-    [Column("Loser1")]
-    private System.Guid _loser1Id;
-    [Column("Loser2")]
-    private System.Nullable<System.Guid> _loser2Id;
+    [ValidatePresence]
+    [ValidateLength(0, 50)]
+    private string _status;
+    private System.Nullable<System.Guid> _playerId;
     private System.Guid _gameId;
 
     #endregion
@@ -301,14 +273,10 @@ namespace Foosinator.Models
     
     /// <summary>Identifies the Created entity attribute.</summary>
     public const string CreatedField = "Created";
-    /// <summary>Identifies the Winner1Id entity attribute.</summary>
-    public const string Winner1IdField = "Winner1Id";
-    /// <summary>Identifies the Winner2Id entity attribute.</summary>
-    public const string Winner2IdField = "Winner2Id";
-    /// <summary>Identifies the Loser1Id entity attribute.</summary>
-    public const string Loser1IdField = "Loser1Id";
-    /// <summary>Identifies the Loser2Id entity attribute.</summary>
-    public const string Loser2IdField = "Loser2Id";
+    /// <summary>Identifies the Status entity attribute.</summary>
+    public const string StatusField = "Status";
+    /// <summary>Identifies the PlayerId entity attribute.</summary>
+    public const string PlayerIdField = "PlayerId";
     /// <summary>Identifies the GameId entity attribute.</summary>
     public const string GameIdField = "GameId";
 
@@ -317,14 +285,8 @@ namespace Foosinator.Models
     
     #region Relationships
 
-    [ReverseAssociation("ResultsByWinner1")]
-    private readonly EntityHolder<Player> _winner1 = new EntityHolder<Player>();
-    [ReverseAssociation("ResultsByWinner2")]
-    private readonly EntityHolder<Player> _winner2 = new EntityHolder<Player>();
-    [ReverseAssociation("ResultsByLoser1")]
-    private readonly EntityHolder<Player> _loser1 = new EntityHolder<Player>();
-    [ReverseAssociation("ResultsByLoser2")]
-    private readonly EntityHolder<Player> _loser2 = new EntityHolder<Player>();
+    [ReverseAssociation("Results")]
+    private readonly EntityHolder<Player> _player = new EntityHolder<Player>();
     [ReverseAssociation("Results")]
     private readonly EntityHolder<Game> _game = new EntityHolder<Game>();
 
@@ -334,31 +296,10 @@ namespace Foosinator.Models
     #region Properties
 
     [System.Diagnostics.DebuggerNonUserCode]
-    public Player Winner1
+    public Player Player
     {
-      get { return Get(_winner1); }
-      set { Set(_winner1, value); }
-    }
-
-    [System.Diagnostics.DebuggerNonUserCode]
-    public Player Winner2
-    {
-      get { return Get(_winner2); }
-      set { Set(_winner2, value); }
-    }
-
-    [System.Diagnostics.DebuggerNonUserCode]
-    public Player Loser1
-    {
-      get { return Get(_loser1); }
-      set { Set(_loser1, value); }
-    }
-
-    [System.Diagnostics.DebuggerNonUserCode]
-    public Player Loser2
-    {
-      get { return Get(_loser2); }
-      set { Set(_loser2, value); }
+      get { return Get(_player); }
+      set { Set(_player, value); }
     }
 
     [System.Diagnostics.DebuggerNonUserCode]
@@ -376,36 +317,19 @@ namespace Foosinator.Models
       set { Set(ref _created, value, "Created"); }
     }
 
-    /// <summary>Gets or sets the ID for the <see cref="Winner1" /> property.</summary>
     [System.Diagnostics.DebuggerNonUserCode]
-    public System.Guid Winner1Id
+    public string Status
     {
-      get { return Get(ref _winner1Id, "Winner1Id"); }
-      set { Set(ref _winner1Id, value, "Winner1Id"); }
+      get { return Get(ref _status, "Status"); }
+      set { Set(ref _status, value, "Status"); }
     }
 
-    /// <summary>Gets or sets the ID for the <see cref="Winner2" /> property.</summary>
+    /// <summary>Gets or sets the ID for the <see cref="Player" /> property.</summary>
     [System.Diagnostics.DebuggerNonUserCode]
-    public System.Nullable<System.Guid> Winner2Id
+    public System.Nullable<System.Guid> PlayerId
     {
-      get { return Get(ref _winner2Id, "Winner2Id"); }
-      set { Set(ref _winner2Id, value, "Winner2Id"); }
-    }
-
-    /// <summary>Gets or sets the ID for the <see cref="Loser1" /> property.</summary>
-    [System.Diagnostics.DebuggerNonUserCode]
-    public System.Guid Loser1Id
-    {
-      get { return Get(ref _loser1Id, "Loser1Id"); }
-      set { Set(ref _loser1Id, value, "Loser1Id"); }
-    }
-
-    /// <summary>Gets or sets the ID for the <see cref="Loser2" /> property.</summary>
-    [System.Diagnostics.DebuggerNonUserCode]
-    public System.Nullable<System.Guid> Loser2Id
-    {
-      get { return Get(ref _loser2Id, "Loser2Id"); }
-      set { Set(ref _loser2Id, value, "Loser2Id"); }
+      get { return Get(ref _playerId, "PlayerId"); }
+      set { Set(ref _playerId, value, "PlayerId"); }
     }
 
     /// <summary>Gets or sets the ID for the <see cref="Game" /> property.</summary>
