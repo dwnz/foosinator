@@ -12,9 +12,9 @@
         <p>@Html.ActionLink("Go to it", "Index", "Game", new { id = Model.ActiveGame.Id }, new { @class = "btn btn-primary" })</p>
     </div>
 }
+
 @using (Html.BeginForm())
 {
-
     <div class="row">
         <div class="col-md-12">
             <h2>Foosinator, like the baconator, but for foosball. And not a burger</h2>
@@ -24,6 +24,8 @@
             </p>
         </div>
     </div>
+
+    <hr />
 
     <div class="row">
         <div class="col-md-6">
