@@ -106,6 +106,17 @@ namespace Foosinator.Services
                     resultsService.IssueLose(gameId, game.Player4Id.Value);
                 }
             }
+            else
+            {
+                resultsService.IssueWin(gameId, game.Player2Id);
+                resultsService.IssueLose(gameId, game.Player1Id);
+
+                if (game.Player3Id != null && game.Player4Id != null)
+                {
+                    resultsService.IssueWin(gameId, game.Player4Id.Value);
+                    resultsService.IssueLose(gameId, game.Player3Id.Value);
+                }
+            }
 
             using (FoosinatorModelUnitOfWork unitOfWork = _context.CreateUnitOfWork())
             {
