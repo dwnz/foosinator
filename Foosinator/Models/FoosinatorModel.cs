@@ -18,6 +18,10 @@ namespace Foosinator.Models
     [ValidateLength(0, 50)]
     private string _name;
     private System.DateTime _created;
+    [ValidateLength(0, 50)]
+    private string _slackUserId;
+    [ValidateLength(0, 500)]
+    private string _profilePicture;
 
     #endregion
     
@@ -27,6 +31,10 @@ namespace Foosinator.Models
     public const string NameField = "Name";
     /// <summary>Identifies the Created entity attribute.</summary>
     public const string CreatedField = "Created";
+    /// <summary>Identifies the SlackUserId entity attribute.</summary>
+    public const string SlackUserIdField = "SlackUserId";
+    /// <summary>Identifies the ProfilePicture entity attribute.</summary>
+    public const string ProfilePictureField = "ProfilePicture";
 
 
     #endregion
@@ -92,6 +100,20 @@ namespace Foosinator.Models
     {
       get { return Get(ref _created, "Created"); }
       set { Set(ref _created, value, "Created"); }
+    }
+
+    [System.Diagnostics.DebuggerNonUserCode]
+    public string SlackUserId
+    {
+      get { return Get(ref _slackUserId, "SlackUserId"); }
+      set { Set(ref _slackUserId, value, "SlackUserId"); }
+    }
+
+    [System.Diagnostics.DebuggerNonUserCode]
+    public string ProfilePicture
+    {
+      get { return Get(ref _profilePicture, "ProfilePicture"); }
+      set { Set(ref _profilePicture, value, "ProfilePicture"); }
     }
 
     #endregion

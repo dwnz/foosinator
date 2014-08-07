@@ -10,6 +10,16 @@
           </validations>
         </entityProperty>
         <entityProperty name="Created" dataType="DateTime" privateSetter="false" />
+        <entityProperty name="SlackUserId" isNullable="true" privateSetter="false">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="ProfilePicture" isNullable="true" privateSetter="false">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="500" />
+          </validations>
+        </entityProperty>
       </entityProperties>
       <oneToManyAssociations>
         <oneToManyAssociation Id="2cd414ac-2abb-412c-82e5-34cce4030af4" collectionName="GamesByPlayer1" backreferenceName="Player1" isNullable="false" columnName="Player1">

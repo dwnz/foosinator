@@ -10,8 +10,9 @@
     @Html.ActionLink("Home", "Index", "Home", null, new { @class = "btn btn-primary" })
 </p>
 
-<table class="table">
+<table class="table table-striped">
     <tr>
+        <th></th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -29,6 +30,9 @@
     @foreach (var item in Model)
     {
         <tr>
+            <td class="col-md-1">
+                <img src="@item.ProfilePicture" style="width: 64px" />
+            </td>
             <td>
                 @item.Name
             </td>

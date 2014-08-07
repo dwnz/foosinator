@@ -59,7 +59,8 @@ namespace Foosinator.Services
                     select 
 	                    count(1) as Items,
 	                    R.Status,
-	                    P.Name
+	                    P.Name,
+						P.ProfilePicture
                     from 
 	                    Results R
                     inner join
@@ -68,7 +69,8 @@ namespace Foosinator.Services
                     group by
 	                    P.ID,
 	                    R.Status,
-	                    P.Name
+	                    P.Name,
+						P.ProfilePicture
                 ", null).ToList();
 
                 IEnumerable<IGrouping<string, LeaderboardRow>> groupedItems = rows.GroupBy(x => x.Name);
@@ -95,7 +97,8 @@ namespace Foosinator.Services
                                        Name = leaderboardRows.Key,
                                        Points = wins - losses,
                                        Wins = wins,
-                                       Losses = losses
+                                       Losses = losses,
+                                       ProfilePicture = leaderboardRows.First().ProfilePicture
                                    });
                 }
             }
